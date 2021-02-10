@@ -1,0 +1,61 @@
+* {
+  user-select: none;
+  /*overflow-x: hidden;*/
+  font-family: Segoe UI;
+  font-size: 20px;
+  outline: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+.b {
+  border: 1px solid blue;
+  border-radius: 15px;
+  transition: 0.5s all;
+}
+
+.b:hover {
+  background-color: red;
+}
+
+#save, #no_save {
+  margin: 10px;
+  width: calc(100% - 20px);
+}
+
+table, tbody, tr {
+  width: 100%;
+}
+
+.maintr {
+  color: black;
+  border: 1px solid blue;
+  height: 40px;
+  border-radius: 15px;
+  width: calc(100%/5);
+  transition: 0.5s all;
+}
+
+.t {
+  border: 1px solid blue;
+  border-radius: 15px;
+  height: 40px;
+}
+
+select {
+  border: 1px solid blue;
+  border-radius: 15px;
+  height: 40px;
+}
+
+.maintr:hover {
+  background-color: red;
+}
+
+small {
+  font-size: 14px;
+}

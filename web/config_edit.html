@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pixelsuft DosBox VM</title>
+  <link rel="shortcut icon" type="image/ico" href="/img/icon.ico">
+  <script language="JavaScript" type="text/ecmascript" src="eel.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/config_edit.css">
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td class="maintr">
+        <center>Video</center>
+      </td>
+      <td class="maintr">
+        <center>Disks</center>
+      </td>
+      <td class="maintr">
+        <center>Misc</center>
+      </td>
+      <td class="maintr">
+        <center>Cpu</center>
+      </td>
+      <td class="maintr">
+        <center>Dos</center>
+      </td>
+    </tr>
+    <tr>
+      <td><label><input id="fullscreen" type="checkbox">Fullscreen</label></td>
+      <td>
+        <small>Floppy A:</small>
+        <input id="fda" class="t" value="" placeholder="Floppy A">
+      </td>
+      <td>
+        <small>Language:</small>
+        <input id="language" class="t" value="default" placeholder="Language">
+      </td>
+      <td>
+        <small>Cpu Core:</small>
+        <select id="core" class="t" value="auto" size="1">
+          <option value="auto">Auto</option>
+          <option value="dynamic">Dynamic</option>
+        </select>
+      </td>
+      <td>
+        <label><input id="xms" type="checkbox">Enable XMS</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <small>Fullscreen Resolution:</small>
+        <input id="fullresolution" class="t" value="original" placeholder="Fullscreen Resolution">
+      </td>
+      <td>
+        <small>Floppy B:</small>
+        <input id="fdb" class="t" value="" placeholder="Floppy B">
+      </td>
+      <td>
+        <small>Machine:</small>
+        <select id="machine" class="t" value="vgaonly" size="1">
+          <option value="hercules">Hercules</option>
+          <option value="cga">CGA</option>
+          <option value="tandy">Tandy</option>
+          <option value="pcjr">PCJR</option>
+          <option value="ega">EGA</option>
+          <option value="vgaonly">VGA</option>
+          <option value="svga_s3">SVGA S3</option>
+          <option value="svga_et3000">SVGA ET3000</option>
+          <option value="svga_et4000">SVGA ET4000</option>
+          <option value="svga_paradise">SVGA Paradise</option>
+          <option value="vesa_nolfb">VESA Nolfb</option>
+          <option value="vesa_oldvbe">VESA Old VBE</option>
+        </select>
+      </td>
+      <td>
+        <small>Cpu Model:</small>
+        <select id="cputype" class="t" value="auto" size="1">
+          <option value="auto">Auto</option>
+          <option value="386">386</option>
+          <option value="386_slow">386 (Slow)</option>
+          <option value="486_slow">486 (Slow)</option>
+          <option value="pentium_slow">Pentium (Slow)</option>
+          <option value="386_prefetch">386 (Prefetch)</option>
+        </select>
+      </td>
+      <td>
+        <label><input id="ems" type="checkbox">Enable EMS</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <small>Window Resolution:</small>
+        <input id="windowresolution" class="t" value="original" placeholder="Window Resolution">
+      </td>
+      <td>
+        <small>Hard Disk C:</small>
+        <input id="hda" class="t" value="" placeholder="Hard Disk C">
+        <small>Geometry:</small>
+        <input id="hda_g" class="t" value="512, 63, 16, 1015" placeholder="Geometry">
+      </td>
+      <td>
+        <small>Memory Size (MB):</small>
+        <input id="memsize" class="t" value="16" placeholder="Memory Size" type="number" min="1">
+      </td>
+      <td>
+        <small>Cycles:</small>
+        <input id="cycles" class="t" value="max" placeholder="Cycles">
+      </td>
+      <td>
+        <label><input id="umb" type="checkbox">Enable UMB</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <small>Output:</small>
+        <select id="output" class="t" value="openglnb" size="1">
+          <option value="openglnb">Open GL nb</option>
+          <option value="opengl">Open GL</option>
+          <option value="ddraw">DDraw</option>
+          <option value="overlay">Overlay</option>
+          <option value="surface">Surface</option>
+        </select>
+      </td>
+      <td>
+        <small>Hard Disk D:</small>
+        <input id="hdb" class="t" value="" placeholder="Hard Disk D">
+        <small>Geometry:</small>
+        <input id="hdb_g" class="t" value="512, 63, 16, 1015" placeholder="Geometry">
+      </td>
+      </td>
+      <td>
+        <small>Mount Drive A:</small>
+        <input id="mount_a" class="t" value="C:\" placeholder="Mount Drive A">
+      </td>
+      <td></td>
+      <td>
+        <small>Keyboard Layout:</small>
+        <input id="keyboardlayout" class="t" value="auto" placeholder="Keyboard Layout">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <small>Sensitivity:</small>
+        <input id="sensitivity" class="t" type="number" value="100" min="1">
+      </td>
+      <td></td>
+      <td>
+        <small>Mount Drive C:</small>
+        <input id="mount_c" class="t" value="" placeholder="Mount Drive C">
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <input type="button" class="b" value="Save and exit" id="save">
+  <input type="button" class="b" value="Exit without saving" id="no_save">
+  <script language="JavaScript" type="text/ecmascript" src="js/config_edit.js"></script>
+</body>
+
+</html>
