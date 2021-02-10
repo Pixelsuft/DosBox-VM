@@ -1,3 +1,4 @@
 # DosBox VM
 Virtual Machines Manager for DOSBox
-# Work in progress (or not ☺)
+# ToDo
+1) Recompile DOSBox and change exitcode to 1337 after reboot vm
