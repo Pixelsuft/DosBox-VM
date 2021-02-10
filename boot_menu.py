@@ -1,6 +1,7 @@
 from sys import exit as sys_exit
 from sys import argv as start_args
 from PyQt5 import QtWidgets as qt_widgets
+from PyQt5 import QtCore as qt_core
 from boot_menu_ui import Ui_MainWindow as main_window
 from clear_cache import clear as clear_cache
 from threading import Thread as thread
@@ -13,6 +14,7 @@ from win32api import GetAsyncKeyState as is_pressed
 from win32con import VK_F1 as F1
 from win32con import VK_F2 as F2
 from win32con import VK_F3 as F3
+from win32con import VK_ESCAPE as ESC
 from configparser import ConfigParser as cfg_parse_class
 
 
@@ -24,10 +26,12 @@ conf = temp_conf_f.read()
 temp_conf_f.close()
 parser.read_string(conf)
 boot_many_fd = False
+exitcode = 0
 
 
 def run_vm():
     global conf
+    global exitcode
     if file_exists('dosbox.conf', file_exists_param):
         del_file('dosbox.conf')
     conf += '\n'
@@ -70,6 +74,7 @@ def run_vm():
     temp_conf_w = open('dosbox.conf', 'w')
     temp_conf_w.write(conf)
     temp_conf_w.close()
+    exitcode = 228
     MainWindow.close()
 
 
@@ -93,6 +98,7 @@ def read_keys():
     global boot_device
     global vm_running
     global boot_many_fd
+    global exitcode
     while not vm_running:
         if is_pressed(F1):
             boot_device = 'a'
@@ -114,6 +120,10 @@ def read_keys():
             run_vm()
             vm_running = True
             break
+        elif is_pressed(ESC):
+            vm_running = True
+            MainWindow.close()
+            break
 
 
 argv = len(start_args)
@@ -124,9 +134,10 @@ MainWindow = qt_widgets.QMainWindow()
 ui = main_window()
 ui.setupUi(MainWindow)
 MainWindow.setWindowTitle(start_args[1] + ' - Pixelsuft DOSBox VM')
+MainWindow.setWindowFlag(qt_core.Qt.WindowCloseButtonHint, False)
 MainWindow.show()
 thread(target=trigger_timer).start()
 thread(target=read_keys).start()
-exitcode = app.exec_()
+app.exec_()
 clear_cache()
 sys_exit(exitcode)

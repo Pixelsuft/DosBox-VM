@@ -184,10 +184,10 @@ def get_vm_name():
 
 
 def run_cmd(to_run):
-    cmd_run(to_run)
-    result = cmd_run('"' + sets['res_dir'] + '\\dosbox.exe" -noconsole')
-    if result == 1337:
-        run_cmd(to_run)
+    if cmd_run(to_run) == 228:
+        result = cmd_run('"' + sets['res_dir'] + '\\dosbox.exe" -noconsole')
+        if result == 1337:
+            run_cmd(to_run)
 
 
 def call_boot_menu(vm_name):
